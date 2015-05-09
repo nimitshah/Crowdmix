@@ -2,6 +2,7 @@ package com.nimitshah.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class User {
     private String userName;
@@ -20,6 +21,10 @@ public class User {
 
     public List<Message> getMessages() {
         return messages;
+    }
+
+    public List<Message> getMessagesSortByEarliestTime() {
+        return messages.stream().sorted((m1,m2)->m2.getDateTime().compareTo(m1.getDateTime())).collect(Collectors.toList());
     }
 
     public List<User> getFollowing() {

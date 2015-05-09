@@ -1,16 +1,16 @@
 package com.nimitshah;
 
+import com.nimitshah.command.CommandFactory;
+
 import java.io.*;
 import java.util.Scanner;
 
 public class CrowdMixCLIApp {
 
     private Scanner scanner;
-    private PrintWriter writer;
 
     public CrowdMixCLIApp(){
         scanner = new Scanner(System.in);
-        writer = new PrintWriter(new OutputStreamWriter(System.out));
     }
 
 
@@ -21,17 +21,17 @@ public class CrowdMixCLIApp {
     }
 
     public void start() {
+        System.out.print(">");
         while(true){
             //use command pattern, create factory to create command
             String command = scanner.nextLine();
-            execute(command);
-            writer.println("Received:"+command);
-
+            String res = execute(command);
+            System.out.print(res);
+            System.out.print(">");
         }
     }
 
     public String execute(String command) {
-
-        return command;
+        return CommandFactory.getCommand(command).execute();
     }
 }

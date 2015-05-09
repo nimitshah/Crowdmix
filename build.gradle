@@ -1,7 +1,9 @@
 apply plugin: 'java'
+apply plugin:'application'
 
 sourceCompatibility = 1.8
 version = '1.0'
+mainClassName = "com.nimitshah.CrowdMixCLIApp"
 
 repositories {
     mavenCentral()
@@ -9,4 +11,9 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+run{
+    standardInput = System.in
+    standardOutput = System.out
 }
